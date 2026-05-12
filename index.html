@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI大模型应用工程师认证 | 工信部教考中心 × 讯飞开放平台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1A3A6B;
+    --primary-light: #2356A8;
+    --accent: #0097E6;
+    --accent-warm: #FF6B35;
+    --gold: #C9940A;
+    --gold-light: #F5C842;
+    --surface: #F5F7FB;
+    --surface2: #EEF2FA;
+    --text: #0D1B2A;
+    --text-muted: #4A5568;
+    --text-light: #7A8BA0;
+    --border: #D4DCEC;
+    --white: #FFFFFF;
+    --gradient-hero: linear-gradient(135deg, #0A1F44 0%, #1A3A6B 40%, #2356A8 100%);
+    --gradient-card: linear-gradient(160deg, #EEF2FA 0%, #FFFFFF 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 31, 68, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo .logo-badge {
+    background: var(--accent);
+    color: white;
+    font-size: 11px; font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .nav-logo .logo-text {
+    color: white; font-size: 14px; font-weight: 500;
+    letter-spacing: 0.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: rgba(255,255,255,0.72); text-decoration: none;
+    font-size: 13px; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: white; }
+  .nav-cta {
+    background: var(--accent);
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 6px;
+    font-weight: 500 !important;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--gradient-hero);
+    padding: 110px 5% 80px;
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+    display: flex; align-items: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(0,151,230,0.18) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,148,10,0.12) 0%, transparent 70%);
+    bottom: -50px; left: 10%;
+    pointer-events: none;
+  }
+  .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+  }
+  .hero-badge span { color: var(--gold-light); }
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+  .hero-subtitle {
+    font-size: clamp(18px, 2.5vw, 26px);
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+  }
+  .hero-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.62);
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 0; }
+  .btn-primary {
+    background: var(--accent);
+    color: white; text-decoration: none;
+    padding: 14px 32px; border-radius: 8px;
+    font-size: 15px; font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.25s;
+    border: none; cursor: pointer;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #0082C8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,151,230,0.4); }
+  .btn-outline {
+    background: transparent;
+    color: white; text-decoration: none;
+    padding: 14px 32px; border-radius: 8px;
+    font-size: 15px; font-weight: 500;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    transition: all 0.25s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+
+  .hero-partners {
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .hero-partners span {
+    font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .partner-tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    padding: 6px 16px; border-radius: 4px;
+    font-size: 13px; font-weight: 500;
+  }
+
+  /* ─── SECTION WRAPPER ─── */
+  section { padding: 100px 5%; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700; color: var(--primary);
+    line-height: 1.3; margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 640px; line-height: 1.8;
+  }
+  .divider {
+    width: 48px; height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    margin: 20px 0 40px;
+  }
+
+  /* ─── CERT CARDS ─── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px; margin-top: 56px;
+  }
+  .cert-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    transition: all 0.3s;
+    position: relative;
+  }
+  .cert-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(26,58,107,0.14);
+    border-color: var(--primary-light);
+  }
+  .cert-card-header {
+    padding: 32px 28px 24px;
+    position: relative;
+  }
+  .cert-card.level-1 .cert-card-header { background: linear-gradient(135deg, #E8F4FE 0%, #F0F7FF 100%); }
+  .cert-card.level-2 .cert-card-header { background: linear-gradient(135deg, #EAF7F0 0%, #F0FAF5 100%); }
+  .cert-card.level-3 .cert-card-header { background: linear-gradient(135deg, #FEF5E4 0%, #FFFAF0 100%); }
+
+  .cert-level-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .level-1 .cert-level-badge { background: #DBEEFF; color: #1A5FA8; }
+  .level-2 .cert-level-badge { background: #D4F0E2; color: #0F6B45; }
+  .level-3 .cert-level-badge { background: #FCE8C3; color: #865800; }
+
+  .cert-level-num {
+    position: absolute; top: 20px; right: 24px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 56px; font-weight: 900;
+    opacity: 0.07; color: var(--primary);
+    line-height: 1;
+  }
+  .cert-card-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--primary); margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .cert-card-body { padding: 28px; }
+  .cert-section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: var(--text-light); text-transform: uppercase;
+    margin-bottom: 10px; margin-top: 20px;
+  }
+  .cert-section-label:first-child { margin-top: 0; }
+  .cert-tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  .cert-tag {
+    font-size: 12px; font-weight: 500;
+    padding: 5px 12px; border-radius: 20px;
+    border: 1px solid;
+  }
+  .level-1 .cert-tag { background: #EEF6FF; color: #1A5FA8; border-color: #B8D8F8; }
+  .level-2 .cert-tag { background: #EAF7EF; color: #0F6B45; border-color: #A6DFC1; }
+  .level-3 .cert-tag { background: #FEF5E4; color: #865800; border-color: #F5D98A; }
+
+  .cert-desc {
+    font-size: 13.5px; color: var(--text-muted);
+    line-height: 1.75;
+  }
+  .cert-audience {
+    font-size: 13.5px; color: var(--text-muted);
+    line-height: 1.75;
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.025);
+    border-radius: 8px;
+    border-left: 3px solid;
+  }
+  .level-1 .cert-audience { border-color: var(--accent); }
+  .level-2 .cert-audience { border-color: #1DB87A; }
+  .level-3 .cert-audience { border-color: var(--gold); }
+
+  /* ─── ABOUT STRIP ─── */
+  .about-strip {
+    background: var(--gradient-hero);
+    padding: 80px 5%;
+  }
+  .about-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: center;
+  }
+  .about-text .section-title { color: white; }
+  .about-text .section-desc { color: rgba(255,255,255,0.7); max-width: 100%; }
+  .about-text .section-label { color: var(--gold-light); }
+  .about-text .divider { background: var(--gold-light); }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 24px 20px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px; font-weight: 900;
+    color: var(--gold-light); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+
+  /* ─── PROCESS ─── */
+  .process { background: var(--surface); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; margin-top: 56px;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 40px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0, var(--accent) 8px, transparent 8px, transparent 16px);
+  }
+  .process-step {
+    text-align: center; padding: 0 24px;
+    position: relative;
+  }
+  .step-num {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 900;
+    margin: 0 auto 28px;
+    position: relative; z-index: 1;
+    box-shadow: 0 8px 24px rgba(26,58,107,0.3);
+  }
+  .step-num.active { background: var(--accent); }
+  .process-step h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--primary); margin-bottom: 12px;
+  }
+  .process-step p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* ─── CERT NOTE ─── */
+  .cert-note {
+    background: linear-gradient(135deg, #EEF2FA 0%, #FFFFFF 100%);
+    border: 1.5px solid var(--border);
+    border-radius: 16px; padding: 40px;
+    margin-top: 56px;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 28px; align-items: start;
+  }
+  .note-icon {
+    width: 56px; height: 56px;
+    background: var(--primary);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .note-icon svg { width: 28px; height: 28px; fill: white; }
+  .cert-note h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--primary); margin-bottom: 12px;
+  }
+  .cert-note p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+  .cert-note a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .cert-note a:hover { text-decoration: underline; }
+
+  /* ─── CTA FOOTER ─── */
+  .cta-section {
+    background: var(--primary);
+    padding: 80px 5%; text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(24px, 3vw, 38px); font-weight: 700;
+    color: white; margin-bottom: 16px;
+  }
+  .cta-section p { color: rgba(255,255,255,0.65); font-size: 16px; margin-bottom: 36px; }
+
+  footer {
+    background: #07121F;
+    padding: 40px 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  footer p { font-size: 13px; color: rgba(255,255,255,0.35); }
+  footer a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 13px; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .process-steps { grid-template-columns: 1fr; gap: 40px; }
+    .process-steps::before { display: none; }
+    .cert-note { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    footer { flex-direction: column; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge { animation: fadeUp 0.6s ease both; }
+  .hero-title { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-subtitle { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-desc { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-actions { animation: fadeUp 0.6s 0.4s ease both; }
+  .hero-partners { animation: fadeUp 0.6s 0.5s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="logo-badge">MIIT</span>
+    <span class="logo-text">AI大模型应用工程师认证</span>
+  </a>
+  <div class="nav-links">
+    <a href="#certs">证书等级</a>
+    <a href="#about">关于认证</a>
+    <a href="#process">考试流程</a>
+    <a href="#apply" class="nav-cta">立即报名</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>权威认证</span>
+      &nbsp;工信部教考中心联合讯飞开放平台
+    </div>
+    <h1 class="hero-title">AI大模型<em>应用工程师</em><br>职业技术认证</h1>
+    <p class="hero-subtitle">— 大模型时代的专业能力证明 —</p>
+    <p class="hero-desc">
+      聚焦大模型应用与智能体开发的基础理论与实践技能，涵盖初级、中级、高级三大等级，为AI时代的从业者提供系统化的职业能力认证体系。
+    </p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn-primary">立即报名考试</a>
+      <a href="#certs" class="btn-outline">查看证书等级</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <p class="section-label">关于认证</p>
+      <h2 class="section-title">权威机构联合打造<br>实战能力认证体系</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        AI大模型应用工程师认证由工信部教考中心与讯飞开放平台联合打造，融合了讯飞丰富的大模型与智能体开发经验，是面向AI大模型应用领域的专业能力认证，覆盖内容创作、RAG系统、智能体开发等核心方向。
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">初级 / 中级 / 高级<br>全阶段认证</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">官方</div>
+        <div class="stat-label">工信部教考中心<br>权威颁发</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">双端</div>
+        <div class="stat-label">理论 + 实操<br>综合考核</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">可查</div>
+        <div class="stat-label">工信部官网<br>在线证书查询</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <div class="section-inner">
+    <p class="section-label">证书等级</p>
+    <h2 class="section-title">三级认证体系，按需选择</h2>
+    <div class="divider"></div>
+    <p class="section-desc">根据个人基础与职业目标，选择对应等级，系统掌握AI大模型应用能力。</p>
+
+    <div class="certs-grid">
+
+      <!-- 初级 -->
+      <div class="cert-card level-1">
+        <div class="cert-card-header">
+          <div class="cert-level-num">01</div>
+          <span class="cert-level-badge">初级证书</span>
+          <h3 class="cert-card-title">AI大模型<br>应用工程师·初级</h3>
+        </div>
+        <div class="cert-card-body">
+          <p class="cert-section-label">适合人群</p>
+          <p class="cert-audience">希望使用大模型与智能体进行创作的人员，适合大模型与智能体初学者</p>
+
+          <p class="cert-section-label">课程收获</p>
+          <p class="cert-desc">掌握大模型基础概念、核心原理及安全基础，熟悉提示词使用及优化技巧，具备使用 DeepSeek、星火大模型等常见大模型进行高质量内容创作与办公提效的实战能力。</p>
+
+          <p class="cert-section-label">考核要点</p>
+          <div class="cert-tag-row">
+            <span class="cert-tag">大模型理论基础</span>
+            <span class="cert-tag">办公提效应用</span>
+            <span class="cert-tag">多模态创作</span>
+            <span class="cert-tag">科研创新</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 中级 -->
+      <div class="cert-card level-2">
+        <div class="cert-card-header">
+          <div class="cert-level-num">02</div>
+          <span class="cert-level-badge">中级证书</span>
+          <h3 class="cert-card-title">AI大模型<br>应用工程师·中级</h3>
+        </div>
+        <div class="cert-card-body">
+          <p class="cert-section-label">适合人群</p>
+          <p class="cert-audience">AI大模型应用开发进阶者、产品/运营、传统IT转型者及需掌握智能体技术的业务人员</p>
+
+          <p class="cert-section-label">课程收获</p>
+          <p class="cert-desc">掌握知识库的构建方法与企业RAG系统的搭建步骤，熟悉智能体技术架构，具备开发和部署能自主执行任务的智能体的实战能力。</p>
+
+          <p class="cert-section-label">考核要点</p>
+          <div class="cert-tag-row">
+            <span class="cert-tag">RAG技术入门</span>
+            <span class="cert-tag">RAG组件拆解</span>
+            <span class="cert-tag">RAG系统搭建</span>
+            <span class="cert-tag">智能体开发</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 高级 -->
+      <div class="cert-card level-3">
+        <div class="cert-card-header">
+          <div class="cert-level-num">03</div>
+          <span class="cert-level-badge">高级证书</span>
+          <h3 class="cert-card-title">AI大模型<br>应用工程师·高级</h3>
+        </div>
+        <div class="cert-card-body">
+          <p class="cert-section-label">适合人群</p>
+          <p class="cert-audience">希望深入AI大模型应用场景，具备一定开发基础的技术开发人员、AI产品经理、AI解决方案工程师</p>
+
+          <p class="cert-section-label">课程收获</p>
+          <p class="cert-desc">具备企业级AI智能体应用全流程开发能力，理解AI合规与数据安全要求，掌握智能体架构设计、大模型微调、RAG数据工程、工作流编排等关键技能。</p>
+
+          <p class="cert-section-label">考核要点</p>
+          <div class="cert-tag-row">
+            <span class="cert-tag">智能体架构设计</span>
+            <span class="cert-tag">工作流编排</span>
+            <span class="cert-tag">大模型微调</span>
+            <span class="cert-tag">MCP工具</span>
+            <span class="cert-tag">Skill开发</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <p class="section-label">学习考试流程</p>
+    <h2 class="section-title">三步获得权威认证</h2>
+    <div class="divider"></div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>课程学习</h3>
+        <p>根据个人基础与学习目标，选择合适的证书等级，参与对应课程的系统学习，夯实理论与实操基础。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num active">02</div>
+        <h3>参加考试</h3>
+        <p>完成课程学习后，参与统一组织的学习考试。考试形式涵盖<strong>理论 + 实操</strong>两部分，全面检验综合能力。</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>领取证书</h3>
+        <p>考试成绩通过后，可在工信部教考中心官网查询电子证书。纸质证书将在约 3 个月内寄送至考生。</p>
+      </div>
+    </div>
+
+    <div class="cert-note">
+      <div class="note-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 18a8 8 0 110-16 8 8 0 010 16zm.75-13h-1.5v5.25l4.5 2.7.75-1.23-3.75-2.22V7z" fill="white"/></svg>
+      </div>
+      <div>
+        <h3>证书说明</h3>
+        <p>
+          考核合格的学员缴纳考试制证费用后可获得相应的职业技术证书。证书信息可在 <a href="https://www.miiteec.org.cn/" target="_blank">工业和信息化部教育与考试中心官网（miiteec.org.cn）</a> 进行查询。制证材料上传后约 <strong>1.5 个月</strong>可查询电子证书，纸质证书约 <strong>3 个月</strong>左右发放。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="apply">
+  <h2>开启你的 AI 大模型认证之旅</h2>
+  <p>选择适合自己的等级，系统学习，获得权威工信部认证证书</p>
+  <a href="https://www.miiteec.org.cn/" target="_blank" class="btn-primary" style="font-size:16px; padding: 16px 40px;">立即了解报名 →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 工业和信息化部教育与考试中心 · 讯飞开放平台 · 联合出品</p>
+  <div style="display:flex; gap: 24px;">
+    <a href="https://www.miiteec.org.cn/" target="_blank">工信部教考中心</a>
+    <a href="#">证书查询</a>
+    <a href="#">联系我们</a>
+  </div>
+</footer>
+
+</body>
+</html>
